@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "postID": {
+      "type": "uid"
+    },
+    "postTitle": {
+      "type": "string"
+    },
+    "postCaption": {
+      "type": "string"
+    },
+    "postDescription": {
+      "type": "richtext"
+    },
+    "postMedia": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "postSlug": {
+      "type": "string"
+    },
+    "postAuthor": {
+      "type": "string"
+    }
+  }
+}

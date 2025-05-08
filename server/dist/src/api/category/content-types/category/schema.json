@@ -1,0 +1,20 @@
+{
+    "kind": "singleType",
+    "collectionName": "categories",
+    "info": {
+        "singularName": "category",
+        "pluralName": "categories",
+        "displayName": "Category"
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "attributes": {
+        "categoryID": {
+            "type": "uid"
+        },
+        "categoryName": {
+            "type": "string"
+        }
+    }
+}
