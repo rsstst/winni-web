@@ -1,22 +1,15 @@
-async function loader() {
-  const path = '/api/homepage';
-  const BASE_URL = "http://localhost:1337";
-  const url = new URL(path, BASE_URL);
+import Post from "@/components/layout/Post";
+import Header from "@/components/layout/Header";
 
-  const response = await fetch(url.href);
-  const data = await response.json();
-  console.log(data);
-
-  return { ...data.data};
-}
-
-export default async function Home() {
-  const data = await loader();
-  return (
-    
-    <div>
-      <h1>{data.title}</h1>
-      <p>{data.description}</p>
-    </div>
-  );
+export default function Home() {
+	return (
+		<div className="w-full flex justify-center">
+			<div className="w-4/5 p-8 bg-gray-700 space-y-4">
+				<Header />
+				<div className="">
+					<Post />
+				</div>
+			</div>
+		</div>
+	);
 }
