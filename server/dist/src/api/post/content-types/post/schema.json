@@ -4,7 +4,8 @@
     "info": {
         "singularName": "post",
         "pluralName": "posts",
-        "displayName": "Post"
+        "displayName": "Post",
+        "description": ""
     },
     "options": {
         "draftAndPublish": true
@@ -23,19 +24,23 @@
             "type": "richtext"
         },
         "postMedia": {
+            "type": "media",
+            "multiple": true,
+            "required": false,
             "allowedTypes": [
                 "images",
                 "files",
                 "videos",
                 "audios"
-            ],
-            "type": "media",
-            "multiple": true
+            ]
         },
         "postSlug": {
             "type": "string"
         },
         "postAuthor": {
+            "type": "string"
+        },
+        "postCategory": {
             "type": "string"
         }
     }

@@ -430,6 +430,7 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
+    description: '';
     displayName: 'Post';
     pluralName: 'posts';
     singularName: 'post';
@@ -446,6 +447,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     postAuthor: Schema.Attribute.String;
     postCaption: Schema.Attribute.String;
+    postCategory: Schema.Attribute.String;
     postDescription: Schema.Attribute.RichText;
     postID: Schema.Attribute.UID;
     postMedia: Schema.Attribute.Media<
