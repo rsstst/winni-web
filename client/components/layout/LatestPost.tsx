@@ -40,7 +40,7 @@ export default async function LatestPost() {
                     <div className="relative flex flex-row space-x-4 bg-gray-500 p-4">
                         <Image src={placeholder} alt="placeholder" width={160}></Image>
                         <div className="flex flex-col justify-between">
-                            <h2>If only lorem get her ipsum everyday</h2>
+                            <h2>If only lorem get her ipsum everyday</h2>   
                             <p className="self-start">Date</p>
                         </div>
                     </div>
