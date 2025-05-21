@@ -12,10 +12,12 @@ const Navbar = () => {
 				<div className="flex justify-between items-center">
 					<div className="flex items-center space-x-8 text-white">
 						<Sidebar />
-						<h1 className="text-2xl font-bold">My Website</h1>
-						<Link href={""}>Beranda</Link>
-						<Link href={""}>Beranda</Link>
-						<Link href={""}>Beranda</Link>
+						<h1 className="text-2xl font-bold text-sky-600">My Website</h1>
+						<Link href={""} className="group transition duration-300">Beranda<span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span></Link>
+						<Link href={""} className="group transition duration-300">Beranda<span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span></Link>
+						<Link href={""} className="group transition duration-300">Beranda<span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span></Link>
+						<Link href={""} className="group transition duration-300">Beranda<span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span></Link>
+						<Link href={""} className="group transition duration-300">Beranda<span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></span></Link>
 					</div>
 
 					<Searchbar />

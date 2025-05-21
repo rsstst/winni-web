@@ -12,7 +12,7 @@ export default function Home() {
 						<Post />
 					</div>
 					<div className="flex-1">
-						<div className="outline-1 w-full h-full">
+						<div className="bg-gray-200 w-full h-full">
 							<p>Test</p>
 						</div>
 					</div>
