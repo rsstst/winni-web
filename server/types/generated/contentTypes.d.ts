@@ -450,10 +450,7 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
     postCategory: Schema.Attribute.String;
     postDescription: Schema.Attribute.RichText;
     postID: Schema.Attribute.UID;
-    postMedia: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    postMedia: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     postSlug: Schema.Attribute.String;
     postTitle: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;

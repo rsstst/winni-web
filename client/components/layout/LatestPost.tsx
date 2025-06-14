@@ -4,7 +4,7 @@ import Link from "next/link";
 import placeholder from "../../public/img/placeholder.png";
 
 async function loader() {
-	const path = "/api/posts/";
+	const path = "/api/posts?populate=*";
 	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
@@ -41,22 +41,25 @@ function timeAgo(publishedAt: string): React.ReactNode {
 
 export default async function LatestPost() {
 	const data = await loader();
+	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	return (
 		<div className="container">
 			<div className="flex flex-col space-y-4">
-				<h2>Artikel Lainnya</h2>
+				<h2 className="w-full bg-black text-white p-2">Artikel Lainnya</h2>
 				<div className="flex flex-col space-y-4">
 					{Array.isArray(data)
-						? data.slice(0, 5).map((post: any) => {
+						? data.slice(0, 3).map((post: any) => {
 								const attributes = post.attributes || post; // fallback if attributes is undefined
+
+								const imageUrl = attributes?.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
 
 								return (
 									<Link key={post.id} href={`/posts/${post.id}`}>
-										<div className="relative flex flex-row space-x-4 bg-gray-500 p-2 overflow-hidden group rounded-xl hover:text-[#21409A]">
+										<div className="relative flex flex-row space-x-4 bg-gray-500 p-2 overflow-hidden group rounded-xl hover:text-blue-200">
 											<div className="w-[160px] h-[100px] overflow-hidden rounded-lg">
 												<Image
-													className="transition-transform duration-300 group-hover:scale-110"
-													src={attributes.postMedia || placeholder}
+													className="transition-transform duration-300 group-hover:scale-110 object-cover w-full h-full"
+													src={imageUrl || placeholder}
 													alt={attributes.postTitle || "placeholder"}
 													width={160}
 													height={160}

@@ -4,8 +4,8 @@ import Link from "next/link";
 import placeholder from "../../public/img/placeholder.png";
 
 async function loader() {
-	const path = "/api/posts/";
-	const BASE_URL = "http://localhost:1337";
+	const path = "/api/posts?populate=*";
+	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
 	const response = await fetch(url.href);
@@ -19,6 +19,8 @@ async function loader() {
 
 export default async function Post() {
 	const data = await loader();
+	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+	const imageUrl = data.postMedia?.url ? `${BASE_URL}${data.postMedia.url}` : placeholder;
 	return (
 		<div className="container w-full h-full flex flex-col">
 			<div>
@@ -26,7 +28,7 @@ export default async function Post() {
 					<Link href="#">
 						<div className="h-[600px] w-[800px] relative overflow-hidden">
 							<div className="h-full w-full">
-								<Image className="transition-transform duration-300 hover:scale-120" src={placeholder} alt="placeholder" layout="fill" objectFit="cover" />
+								<Image className="transition-transform duration-300 hover:scale-120" src={imageUrl || placeholder} alt="placeholder" layout="fill" objectFit="cover" />
 							</div>
 							<div className="absolute bottom-0 left-0 text-black p-2 w-full bg-white/50 space-y-4">
 								<h2 className="text-4xl font-bold">{data.postTitle}</h2>
