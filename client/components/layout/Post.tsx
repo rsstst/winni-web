@@ -25,7 +25,7 @@ export default async function Post() {
 		<div className="container w-full h-full flex flex-col">
 			<div>
 				<div className="flex flex-col w-fit h-fit bg-slate-600 rounded group">
-					<Link href="#">
+					<Link key={data.postSlug} href={`/detail/${data.postSlug}`}>
 						<div className="h-[600px] w-[800px] relative overflow-hidden">
 							<div className="h-full w-full">
 								<Image className="transition-transform duration-300 hover:scale-120" src={imageUrl || placeholder} alt="placeholder" layout="fill" objectFit="cover" />

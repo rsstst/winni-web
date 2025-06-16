@@ -31,7 +31,7 @@ const Header = async () => {
 
 						return (
 							<div key={post.id} className="w-[180px] h-[120px] flex flex-col group">
-								<Link href={`/post/${post.id || "#"}`}>
+								<Link href={`/detail/${post.id || "#"}`}>
 									<div className="w-[180px] h-[120px] overflow-hidden">
 										<Image 
 											height={180} 

@@ -54,7 +54,7 @@ export default async function LatestPost() {
 								const imageUrl = attributes?.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
 
 								return (
-									<Link key={post.id} href={`/posts/${post.id}`}>
+									<Link key={post.id} href={`/detail/${post.id}`}>
 										<div className="relative flex flex-row space-x-4 bg-gray-500 p-2 overflow-hidden group rounded-xl hover:text-blue-200">
 											<div className="w-[160px] h-[100px] overflow-hidden rounded-lg">
 												<Image
