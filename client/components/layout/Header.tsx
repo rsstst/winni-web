@@ -30,8 +30,8 @@ const Header = async () => {
 						const imageUrl = attributes?.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
 
 						return (
-							<div key={post.id} className="w-[180px] h-[120px] flex flex-col group">
-								<Link href={`/detail/${post.id || "#"}`}>
+							<div key={post.postSlug} className="w-[180px] h-[120px] flex flex-col group">
+								<Link href={`/detail/${post.postSlug || "#"}`}>
 									<div className="w-[180px] h-[120px] overflow-hidden">
 										<Image 
 											height={180} 
