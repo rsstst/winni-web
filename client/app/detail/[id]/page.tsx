@@ -31,23 +31,21 @@ const DetailPage = async (props: { params: Promise<{ id: string }> }) => {
 				<p className="text-center text-sm text-gray-600">{new Date(data.createdAt).toLocaleDateString()}</p>
 				<div className="max-w-2xl mx-auto p-4">
 					<Image src={imgUrl} height={1920} width={1080} alt={data.postTitle} className="w-full h-auto mb-4" />
-					<p className="text-justify">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus placerat facilisis elit, sit amet ornare turpis fringilla eget. Nam sit amet nisi sit amet magna aliquet malesuada. Nam
-						mattis, massa tristique malesuada interdum, ligula enim efficitur nulla, et vehicula velit tortor sed mauris.
-					</p>
-					<br />
-					<p className="text-justify">
-						Maecenas sollicitudin pretium ullamcorper. Morbi sit amet congue diam. Nam ornare faucibus vehicula. Etiam porta turpis odio, in molestie purus fringilla sed. Quisque in bibendum quam.
-						Vivamus convallis magna a massa commodo imperdiet. Cras in mollis metus, tincidunt auctor massa.
-					</p>
-					<br />
-					<p className="text-justify">
-						Fusce in lectus pellentesque, consequat enim nec, varius odio. Sed in urna vehicula, mattis urna a, egestas leo. Duis a nisl nunc. Aliquam bibendum diam id pulvinar vehicula. Integer
-						libero erat, dignissim tempus enim ut, elementum imperdiet felis.
-					</p>
-
-					{/* <div dangerouslySetInnerHTML={{ __html: data.postDescription || "" }}>
-					</div> */}
+					{Array.isArray(data.postDescription)
+						? data.postDescription
+							.filter((block: any) => block.type === "paragraph")
+							.map((block: any, idx: number) => {
+								const text = Array.isArray(block.children)
+									? block.children.map((child: any) => child.text).join("")
+									: "";
+							   return (
+								   <React.Fragment key={idx}>
+									   <p className="text-justify">{text}</p>
+									   <br />
+								   </React.Fragment>
+							   );
+							})
+						: null}
 				</div>
 			</div>
 		</div>

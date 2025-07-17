@@ -1,26 +1,27 @@
 {
-    "kind": "collectionType",
-    "collectionName": "posts",
+    "kind": "singleType",
+    "collectionName": "abouts",
     "info": {
-        "singularName": "post",
-        "pluralName": "posts",
-        "displayName": "Post",
+        "singularName": "about",
+        "pluralName": "abouts",
+        "displayName": "About",
         "description": ""
     },
     "options": {
         "draftAndPublish": true
     },
+    "pluginOptions": {},
     "attributes": {
-        "postID": {
-            "type": "uid"
+        "description": {
+            "type": "blocks"
         },
-        "postTitle": {
+        "title": {
             "type": "string"
         },
-        "postCaption": {
+        "subTitle": {
             "type": "string"
         },
-        "postMedia": {
+        "media": {
             "type": "media",
             "multiple": false,
             "required": false,
@@ -31,17 +32,8 @@
                 "audios"
             ]
         },
-        "postSlug": {
+        "footprint": {
             "type": "string"
-        },
-        "postAuthor": {
-            "type": "string"
-        },
-        "postCategory": {
-            "type": "string"
-        },
-        "postDescription": {
-            "type": "blocks"
         }
     }
 }
