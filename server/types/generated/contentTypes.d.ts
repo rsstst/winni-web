@@ -399,7 +399,7 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiCategoryCategory extends Struct.SingleTypeSchema {
+export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
     displayName: 'Category';
@@ -412,6 +412,7 @@ export interface ApiCategoryCategory extends Struct.SingleTypeSchema {
   attributes: {
     categoryID: Schema.Attribute.UID;
     categoryName: Schema.Attribute.String;
+    categoryURL: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -477,7 +478,10 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     postAuthor: Schema.Attribute.String;
     postCaption: Schema.Attribute.String;
-    postCategory: Schema.Attribute.String;
+    postCategory: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::category.category'
+    >;
     postDescription: Schema.Attribute.Blocks;
     postID: Schema.Attribute.UID;
     postMedia: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;

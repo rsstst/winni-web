@@ -37,11 +37,13 @@
     "postAuthor": {
       "type": "string"
     },
-    "postCategory": {
-      "type": "string"
-    },
     "postDescription": {
       "type": "blocks"
+    },
+    "postCategory": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
     }
   }
 }

@@ -33,7 +33,7 @@ export default async function Post() {
 							<div className="absolute bottom-0 left-0 text-black p-2 w-full bg-white/50 space-y-4">
 								<h2 className="text-4xl font-bold">{data.postTitle}</h2>
 								<p className="text-xl">
-									{new Date(data.createdAt).toLocaleDateString()} | {data.postCategory}
+									{new Date(data.createdAt).toLocaleDateString()} | {data.postCategory?.categoryName || 'No Category'}
 								</p>
 							</div>
 						</div>

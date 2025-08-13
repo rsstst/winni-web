@@ -1,7 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import placeholder from "../../../public/img/placeholder.png";
 
 async function loader(id: string) {
