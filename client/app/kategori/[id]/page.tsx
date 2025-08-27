@@ -28,8 +28,8 @@ const categoryPage = async (props: { params: Promise<{ id: string }> }) => {
 						const imgUrl = attributes.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
 						
 						return (
-							<div key={post.id || index} className="flex flex-row w-full h-[320px] gap-8 bg-gray-500 p-8">
-								<Image src={imgUrl} height={500} width={270} alt={attributes.postTitle} className="mb-4" />
+							<div key={post.id || index} className="flex flex-row w-full h-[320px] gap-8 bg-gray-500 rounded-lg p-4">
+								<Image src={imgUrl} height={500} width={270} alt={attributes.postTitle} className="object-cover" />
 								<div>
 									<h1>{attributes.postTitle}</h1>
 									<p>{attributes.postCaption}</p>
