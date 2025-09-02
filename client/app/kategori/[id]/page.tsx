@@ -27,7 +27,7 @@ const categoryPage = async (props: { params: Promise<{ id: string }> }) => {
 						const attributes = post.attributes || post;
 						const imgUrl = attributes.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
 						return (
-								<a key={post.postSlug} href={`/detail/${post.postSlug}`}>
+								<a key={post.postSlug} href={`/detail/${post.postSlug}`} className="hover:cursor-pointer">
 								<div key={post.id || index} className="flex flex-row w-full h-[320px] gap-8 bg-slate-200 rounded-lg p-4">
 									<Image src={imgUrl} height={500} width={270} alt={attributes.postTitle} className="object-cover" />
 									<div>
