@@ -15,8 +15,7 @@ async function loader() {
 
 const About = async () => {
 	const data = await loader();
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
-	const imageUrl = data.media?.url ? `${BASE_URL}${data.media.url}` : placeholder;
+	const imageUrl = data.media?.url || placeholder;
 	return (
 		<div className="flex flex-col items-center justify-center bg-gray-100 p-8">
 			<div className="bg-slate-200 p-4 rounded-lg shadow-md mb-8 w-full">

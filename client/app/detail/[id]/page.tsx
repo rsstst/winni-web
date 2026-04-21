@@ -19,8 +19,7 @@ async function loader(id: string) {
 const DetailPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const data = await loader(params.id);
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
-	const imgUrl = data.postMedia?.url ? `${BASE_URL}${data.postMedia.url}` : placeholder;
+	const imgUrl = data.postMedia?.url || placeholder;
 	return (
 		<div>
 			<div>

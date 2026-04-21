@@ -17,7 +17,6 @@ async function loader(id: string) {
 const categoryPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const data = await loader(params.id);
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 
 	return (
 		<div className="items-center justify-center bg-gray-100 pl-32 pr-32 pt-8 pb-8">
@@ -25,7 +24,7 @@ const categoryPage = async (props: { params: Promise<{ id: string }> }) => {
 				{Array.isArray(data) && data.length > 0 ? (
 					data.map((post: any, index: number) => {
 						const attributes = post.attributes || post;
-						const imgUrl = attributes.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
+						const imgUrl = attributes.postMedia?.url || placeholder;
 						return (
 								<a key={post.postSlug} href={`/detail/${post.postSlug}`} className="hover:cursor-pointer">
 								<div key={post.id || index} className="flex flex-row w-full h-[320px] gap-8 bg-slate-200 rounded-lg p-4">

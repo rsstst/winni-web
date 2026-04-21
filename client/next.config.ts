@@ -9,10 +9,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
         hostname: apiHostname,
         port: "",
-        pathname: "/uploads/**",
+        pathname: "/**",
       },
     ],
   },

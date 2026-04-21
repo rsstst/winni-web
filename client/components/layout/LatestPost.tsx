@@ -51,7 +51,7 @@ export default async function LatestPost() {
 						? data.slice(0, 3).map((post: any) => {
 								const attributes = post.attributes || post; // fallback if attributes is undefined
 
-								const imageUrl = attributes?.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
+								const imageUrl = attributes?.postMedia?.url || placeholder;
 
 								return (
 									<Link key={post.postSlug} href={`/detail/${post.postSlug}`}>

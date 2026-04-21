@@ -27,7 +27,7 @@ const Header = async () => {
 						const attributes = post.attributes || post; // fallback if attributes is undefined
 
 						// Construct full image URL from Strapi
-						const imageUrl = attributes?.postMedia?.url ? `${BASE_URL}${attributes.postMedia.url}` : placeholder;
+						const imageUrl = attributes?.postMedia?.url || placeholder;
 
 						return (
 							<div key={post.postSlug} className="w-[180px] h-[120px] flex flex-col group">
