@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const apiHostname = process.env.NEXT_PUBLIC_API_URL
-  ? new URL(process.env.NEXT_PUBLIC_API_URL).hostname
+const apiHostname = process.env.STRAPI_URL
+  ? new URL(process.env.STRAPI_URL).hostname
   : "localhost";
 
 const nextConfig: NextConfig = {
@@ -12,13 +12,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: apiHostname,
         port: "",
-        pathname: "/uploads/**",
-      },
-
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
         pathname: "/uploads/**",
       },
     ],
