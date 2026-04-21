@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
-const apiHostname = process.env.STRAPI_URL
-  ? new URL(process.env.STRAPI_URL).hostname
+const apiHostname = process.env.STRAPI_MEDIA_URL
+  ? new URL(process.env.STRAPI_MEDIA_URL).hostname
   : "localhost";
 
 const nextConfig: NextConfig = {
