@@ -2,7 +2,12 @@ export default [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['http://localhost:3000', 'env:FRONTEND_URL'],
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
@@ -11,11 +16,3 @@ export default [
   'strapi::public',
 ];
 
-module.exports = {
-  settings: {
-    cors: {
-      enabled: true,
-      origin: ['env:FRONTEND_URL', 'http://localhost:3000'],
-    },
-  },
-};
