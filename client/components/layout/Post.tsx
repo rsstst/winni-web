@@ -19,8 +19,7 @@ async function loader() {
 
 export default async function Post() {
 	const data = await loader();
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
-	const imageUrl = data.postMedia?.url ? `${BASE_URL}${data.postMedia.url}` : placeholder;
+	const imageUrl = data.postMedia?.url || placeholder;
 	return (
 		<div className="container w-full h-full flex flex-col">
 			<div>
