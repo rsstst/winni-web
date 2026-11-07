@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
-const apiHostname = process.env.STRAPI_MEDIA_URL
-  ? new URL(process.env.STRAPI_MEDIA_URL).hostname
-  : "localhost";
+const apiHostname = "localhost";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -10,7 +8,6 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         hostname: apiHostname,
-        port: "",
         pathname: "/**",
       },
     ],

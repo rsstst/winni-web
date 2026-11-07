@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import placeholder from "../../public/img/placeholder.png";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+
 async function loader() {
 	const path = "/api/posts?populate=*";
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
 	const response = await fetch(url.href, { cache: "no-store" });
@@ -41,7 +42,6 @@ function timeAgo(publishedAt: string): React.ReactNode {
 
 export default async function LatestPost() {
 	const data = await loader();
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	return (
 		<div className="container">
 			<div className="flex flex-col space-y-4">
@@ -51,7 +51,7 @@ export default async function LatestPost() {
 						? data.slice(0, 3).map((post: any) => {
 								const attributes = post.attributes || post; // fallback if attributes is undefined
 
-								const imageUrl = attributes?.postMedia?.url || placeholder;
+								const imageUrl = attributes?.postMedia?.url ? new URL(attributes.postMedia.url, BASE_URL).toString() : placeholder;
 
 								return (
 									<Link key={post.postSlug} href={`/detail/${post.postSlug}`}>

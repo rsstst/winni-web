@@ -2,9 +2,10 @@ import React from "react";
 import Image from "next/image";
 import placeholder from "../../../public/img/placeholder.png";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+
 async function loader(id: string) {
 	const path = "/api/posts?filters[postCategory][categoryURL][$eq]=" + id + "&populate=*";
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
 	const response = await fetch(url.href);
@@ -24,7 +25,7 @@ const categoryPage = async (props: { params: Promise<{ id: string }> }) => {
 				{Array.isArray(data) && data.length > 0 ? (
 					data.map((post: any, index: number) => {
 						const attributes = post.attributes || post;
-						const imgUrl = attributes.postMedia?.url || placeholder;
+						const imgUrl = attributes.postMedia?.url ? new URL(attributes.postMedia.url, BASE_URL).toString() : placeholder;
 						return (
 								<a key={post.postSlug} href={`/detail/${post.postSlug}`} className="hover:cursor-pointer">
 								<div key={post.id || index} className="flex flex-row w-full h-[320px] gap-8 bg-slate-200 rounded-lg p-4">

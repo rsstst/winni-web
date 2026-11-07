@@ -2,9 +2,10 @@ import React from "react";
 import Image from "next/image";
 import placeholder from "../../public/img/placeholder.png";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+
 async function loader() {
 	const path = "/api/about?populate=*";
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
 	const response = await fetch(url.href, { cache: "no-store" });
@@ -15,7 +16,7 @@ async function loader() {
 
 const About = async () => {
 	const data = await loader();
-	const imageUrl = data.media?.url || placeholder;
+	const imageUrl = data.media?.url ? new URL(data.media.url, BASE_URL).toString() : placeholder;
 	return (
 		<div className="flex flex-col items-center justify-center bg-gray-100 p-8">
 			<div className="bg-slate-200 p-4 rounded-lg shadow-md mb-8 w-full">

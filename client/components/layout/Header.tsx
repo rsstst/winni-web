@@ -4,9 +4,10 @@ import Link from "next/link";
 
 import placeholder from "../../public/img/placeholder.png";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+
 async function loader() {
 	const path = "/api/posts?populate=*";
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
 	const response = await fetch(url.href, { cache: "no-store" });
@@ -18,8 +19,6 @@ async function loader() {
 
 const Header = async () => {
 	const data = await loader();
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
-
 	return (
 		<div className="flex flex-row justify-between gap-16">
 			{Array.isArray(data)
@@ -27,7 +26,7 @@ const Header = async () => {
 						const attributes = post.attributes || post; // fallback if attributes is undefined
 
 						// Construct full image URL from Strapi
-						const imageUrl = attributes?.postMedia?.url || placeholder;
+						const imageUrl = attributes?.postMedia?.url ? new URL(attributes.postMedia.url, BASE_URL).toString() : placeholder;
 
 						return (
 							<div key={post.postSlug} className="w-[180px] h-[120px] flex flex-col group">

@@ -2,9 +2,10 @@ import React from "react";
 import Image from "next/image";
 import placeholder from "../../../public/img/placeholder.png";
 
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
+
 async function loader(id: string) {
 	const path = "/api/posts?filters[postSlug][$eq]=" + id + "&populate=*";
-	const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
 	const url = new URL(path, BASE_URL);
 
 	const response = await fetch(url.href);
@@ -19,7 +20,7 @@ async function loader(id: string) {
 const DetailPage = async (props: { params: Promise<{ id: string }> }) => {
 	const params = await props.params;
 	const data = await loader(params.id);
-	const imgUrl = data.postMedia?.url || placeholder;
+	const imgUrl = data.postMedia?.url ? new URL(data.postMedia.url, BASE_URL).toString() : placeholder;
 	return (
 		<div>
 			<div>

@@ -4,7 +4,12 @@ exports.default = [
     'strapi::logger',
     'strapi::errors',
     'strapi::security',
-    'strapi::cors',
+    {
+        name: 'strapi::cors',
+        config: {
+            origin: ['http://localhost:3000', 'env:FRONTEND_URL', 'env:STRAPI_MEDIA_URL'],
+        },
+    },
     'strapi::poweredBy',
     'strapi::query',
     'strapi::body',
